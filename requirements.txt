@@ -1,0 +1,16 @@
+# Web Framework
+Django==5.2.4
+djangorestframework==3.16.0
+
+# NLP and Machine Learning Libraries
+# Let pip resolve the correct compatible versions
+nltk
+numpy
+scikit-learn
+scipy
+tensorflow
+transformers
+torch
+
+# Other dependencies
+sqlparse

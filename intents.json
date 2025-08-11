@@ -33,10 +33,14 @@
         "What can I study at YIC?",
         "List all available programs.",
         "What courses are there?",
-        "What programs are currently offered?"
+        "What programs are currently offered?",
+        "What kind of courses am I able to study there?",
+        "Tell me about the different subjects you teach",
+        "What are my study options?",
+        "what is the porgrams"
       ],
       "responses": [
-        "YIC offers a wide range of programs: GED, Pre-IGCSE, IGCSE O Level, Level 3 Diplomas in IT and Business, Higher National Diplomas (HND) in Computing and Business, and Bachelor's degrees including BSc (Hons) in Business Computing & Information Systems and BA (Hons) in Business Management. [cite: 34]"
+        "YIC offers a wide range of programs..."
       ]
     },
     {
@@ -62,10 +66,25 @@
         "Tell me the fees for each program.",
         "Cost of IGCSE",
         "Price for the BSc program",
-        "Can you detail the tuition fees?"
+        "What's the price for a computing degree?",
+        "How much is the HND in Business?",
+        "Show me the price list",
+        "Cost of the final year"
       ],
       "responses": [
-        "Tuition fees are program-specific. For example, the GED program has a 200,000 MMK registration fee and a monthly tuition of 300,000 MMK. [cite_start]For BSc (Hons) programs, the Foundation year is 1,700,000 MMK, the first and second years are 9,800,000 MMK each, and the final year is $7,000 USD, plus a 300,000 MMK registration fee. [cite: 49, 50, 51, 58, 59, 60, 61, 62, 63]"
+        "Tuition fees vary by program. For GED, the registration is 200,000 MMK with a monthly fee of 300,000 MMK. For BSc (Hons) programs, the Foundation year costs 1,700,000 MMK, First and Second years are 9,800,000 MMK each, and the Final Year is $7,000 USD, plus a 300,000 MMK registration fee. Please ask about a specific program for more details."
+      ]
+    },
+    {
+      "tag": "scholarships",
+      "patterns": [
+        "Do you offer scholarships?",
+        "Are there any scholarships available?",
+        "How can I apply for a scholarship?",
+        "What scholarships do you have?"
+      ],
+      "responses": [
+        "Yes, YIC offers various scholarships based on academic performance and financial need. You can apply for scholarships during the admission process."
       ]
     },
     {
@@ -241,6 +260,32 @@
         "You're welcome! Feel free to ask if you have more questions. Goodbye!",
         "Happy to help! Have a great day."
       ]
+    },
+    {
+      "tag": "about_hnd",
+      "patterns": ["HND", "hnd program", "tell me about hnd"],
+      "responses": ["The Higher National Diploma (HND) is a Level 5 qualification from Pearson. At YIC, we offer HND in Computing and HND in Business. After completing it, you can find a job or continue to a final year Top-Up degree at many universities."]
+    },
+    {
+      "tag": "about_igcse",
+      "patterns": ["IGCSE", "igcse program", "tell me about igcse"],
+      "responses": ["IGCSE is a globally recognized UK-based qualification for students aged 14-16. It is a 20-month program at YIC that prepares students for higher education worldwide."]
+    },
+    {
+      "tag": "about_ged",
+      "patterns": ["GED", "ged program", "tell me about ged"],
+      "responses": ["The GED is an American high school equivalency qualification for students aged 16 and above. It's an 8-month program at YIC that is primarily accepted for university admission in the U.S. and Canada."]
+    },
+    {
+      "tag": "about_bsc",
+      "patterns": ["BSc", "bsc program", "tell me about bsc"],
+      "responses": ["The BSc (Hons) in Business Computing & Information Systems is a 3-year degree awarded by the University of Lancashire. It includes a Foundation year and two years of study, with the final year being a Top-Up degree."]
+    },
+    {
+      "tag": "about_ba",
+      "patterns": ["BA", "ba program", "tell me about ba"],
+      "responses": ["The BA (Hons) in Business Management is a 3-year degree awarded by the University of Greater Manchester. It includes a Foundation year and two years of study, with the final year being a Top-Up degree."]
     }
+    
   ]
 }

@@ -1,90 +1,74 @@
 # chatbot/nlp_processor.py
 
-import random
+import json
 import time
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from .models import Intent
+import numpy as np
+import tensorflow as tf
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+import pickle
 
-# --- This section remains the same ---
-def load_chat_data():
-    all_patterns = []
-    pattern_to_tag = {}
-    tag_map = {}
+# --- Import our new pattern generator ---
+from pattern_generator import generate_patterns, save_new_patterns
 
-    for intent in Intent.objects.prefetch_related('patterns', 'responses'):
-        tag_map[intent.tag] = [r.text for r in intent.responses.all()]
-        for p in intent.patterns.all(): 
-            all_patterns.append(p.text)
-            pattern_to_tag[p.text] = intent.tag
-
-    vectorizer = TfidfVectorizer(stop_words='english')
-    X = vectorizer.fit_transform(all_patterns)
-    return vectorizer, X, all_patterns, pattern_to_tag, tag_map
-
+# --- Load all necessary models and files ---
+print("Loading all chatbot models and supporting files...")
 try:
-    vectorizer, X_patterns, all_patterns, pattern_to_tag, tag_map = load_chat_data()
+    # --- LSTM Model Components ---
+    lstm_model = tf.keras.models.load_model('chatbot_model.h5')
+    with open('tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
+    with open('label_encoder.pickle', 'rb') as enc:
+        lbl_encoder = pickle.load(enc)
+    with open('intents.json', 'r') as f:
+        data = json.load(f)
 except Exception as e:
     print("[Chatbot Load Error]", e)
-    vectorizer, X_patterns, all_patterns, pattern_to_tag, tag_map = None, None, [], {}, {}
-# -----------------------------------------
+    lstm_model, tokenizer, lbl_encoder, data = None, None, None, None
 
 
-# --- UPDATED get_response function ---
+# --- The Final Hybrid get_response function ---
 def get_response(user_input):
     start_time = time.time()
+    if not all([lstm_model, tokenizer, lbl_encoder, data]):
+        return { "response": "Error: The chatbot model is not loaded correctly." }
+
+    # --- LSTM Prediction Logic (This is the primary method now) ---
+    max_len = 20
+    sequence = tokenizer.texts_to_sequences([user_input])
+    padded_sequence = pad_sequences(sequence, truncating='post', maxlen=max_len)
+    result = lstm_model.predict(padded_sequence, verbose=0)[0]
     
-    # *** 1. RULE-BASED LOGIC STARTS HERE ***
-    # We define simple rules for common words.
-    # The key is the user's input (in lowercase), and the value is the intent tag.
+    predicted_tag_index = np.argmax(result)
+    confidence = float(result[predicted_tag_index])
     
-    lowered_input = user_input.lower()
-    
-    # Rule for greetings
-    if any(word in lowered_input for word in ["hello", "hi", "hey"]):
-        matched_tag = "greeting"
-        response_text = random.choice(tag_map[matched_tag])
-        confidence = 1.0 # Rules are 100% confident
-        method = "Rule-based"
+    predicted_tag = "fallback" # Default tag
+    confidence_threshold = 0.75
 
-    # Rule for goodbyes
-    elif any(word in lowered_input for word in ["bye", "goodbye", "thanks"]):
-        matched_tag = "goodbye"
-        response_text = random.choice(tag_map[matched_tag])
-        confidence = 1.0
-        method = "Rule-based"
+    if confidence >= confidence_threshold:
+        predicted_tag = lbl_encoder.inverse_transform([predicted_tag_index])[0]
 
-    # *** 2. IF NO RULE MATCHES, FALL BACK TO RETRIEVAL-BASED LOGIC ***
-    else:
-        method = "Retrieval" # Set the method to retrieval
-        user_vector = vectorizer.transform([user_input])
-        similarities = cosine_similarity(user_vector, X_patterns)
-        most_similar_idx = similarities.argmax()
-        confidence = similarities[0, most_similar_idx]
-        
-        similarity_threshold = 0.5
+        # --- SELF-IMPROVEMENT STEP ---
+        # If confidence is very high, let's generate and save new patterns
+        if confidence > 0.90: 
+            new_patterns = generate_patterns(user_input)
+            save_new_patterns(predicted_tag, user_input, new_patterns)
+            
+    # --- Get the response text ---
+    response_text = "I'm sorry, I don't understand that. Please rephrase."
+    for i in data['intents']:
+        if i['tag'] == predicted_tag:
+            response_text = np.random.choice(i['responses'])
+            break
 
-        if confidence >= similarity_threshold:
-            matched_pattern = all_patterns[most_similar_idx]
-            matched_tag = pattern_to_tag[matched_pattern]
-            response_text = random.choice(tag_map[matched_tag])
-        else:
-            # Fallback if retrieval confidence is also too low
-            matched_tag = "fallback"
-            confidence = 0.0
-            fallback_responses = tag_map.get("fallback", ["I'm sorry, I don't understand that."])
-            response_text = random.choice(fallback_responses)
-
-    # *** 3. FINALIZE AND RETURN THE DATA ***
     end_time = time.time()
     processing_time = round((end_time - start_time) * 1000)
 
+    # Prepare final response data
     response_data = {
         "response": response_text,
-        "method": method,
-        "tag": matched_tag,
+        "method": "LSTM",
+        "tag": predicted_tag,
         "confidence": confidence,
         "processing_time": processing_time
     }
-
     return response_data
