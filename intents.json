@@ -1,0 +1,246 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Start"
+      ],
+      "responses": [
+        "Hello! I am the YIC FAQ Chatbot. How can I help you with your admission questions today?"
+      ]
+    },
+    {
+      "tag": "about_yic",
+      "patterns": [
+        "Why should I attend YIC?",
+        "Tell me about YIC",
+        "What is special about YIC?",
+        "Why YIC?",
+        "What makes YIC a good choice?"
+      ],
+      "responses": [
+        "YIC, founded in 1997, is officially recognized by the Ministry of Education in Myanmar and certified by Pearson BTEC and Edexcel. We offer quality education with experienced teachers, modern facilities including air-conditioned classrooms, fully-equipped labs, a large library, and an auditorium. [cite: 1, 11, 13, 14, 15, 16, 17, 19]"
+      ]
+    },
+    {
+      "tag": "programs_offered",
+      "patterns": [
+        "What programs do you offer?",
+        "What can I study at YIC?",
+        "List all available programs.",
+        "What courses are there?",
+        "What programs are currently offered?"
+      ],
+      "responses": [
+        "YIC offers a wide range of programs: GED, Pre-IGCSE, IGCSE O Level, Level 3 Diplomas in IT and Business, Higher National Diplomas (HND) in Computing and Business, and Bachelor's degrees including BSc (Hons) in Business Computing & Information Systems and BA (Hons) in Business Management. [cite: 34]"
+      ]
+    },
+    {
+      "tag": "admission_requirements",
+      "patterns": [
+        "What are the admission requirements?",
+        "What grade do I need to be in?",
+        "What level of education is required to start?",
+        "Requirements for GED",
+        "How to get into IGCSE",
+        "What are the entry requirements for Level 3?",
+        "What do I need for a Level 4 diploma?"
+      ],
+      "responses": [
+        "The admission requirements vary by program. For Pre-IGCSE, you need to have completed Grade 7. For GED and IGCSE, Grade 8 completion is required. [cite_start]For the Level 3 diploma, you need to have completed Grade 9, and for the Level 4 diploma, Grade 12 completion is necessary. [cite: 86, 87, 88, 89, 90]"
+      ]
+    },
+    {
+      "tag": "tuition_fees",
+      "patterns": [
+        "What are the tuition fees?",
+        "How much does it cost?",
+        "Tell me the fees for each program.",
+        "Cost of IGCSE",
+        "Price for the BSc program",
+        "Can you detail the tuition fees?"
+      ],
+      "responses": [
+        "Tuition fees are program-specific. For example, the GED program has a 200,000 MMK registration fee and a monthly tuition of 300,000 MMK. [cite_start]For BSc (Hons) programs, the Foundation year is 1,700,000 MMK, the first and second years are 9,800,000 MMK each, and the final year is $7,000 USD, plus a 300,000 MMK registration fee. [cite: 49, 50, 51, 58, 59, 60, 61, 62, 63]"
+      ]
+    },
+    {
+      "tag": "additional_fees",
+      "patterns": [
+        "Are there any additional fees?",
+        "Are there fees besides tuition?",
+        "What about exam fees or lab fees?"
+      ],
+      "responses": [
+        "Yes, in addition to tuition, there are Registration Fees and Exam Fees for the programs. [cite: 65]"
+      ]
+    },
+    {
+      "tag": "payment_schedule",
+      "patterns": [
+        "What is the payment schedule?",
+        "Can I pay in installments?",
+        "Are there monthly payment options?",
+        "How often do I need to pay?"
+      ],
+      "responses": [
+        "Yes, YIC offers a monthly installment payment plan for all programs, making it convenient for students. [cite: 68, 71]"
+      ]
+    },
+    {
+      "tag": "payment_methods",
+      "patterns": [
+        "What payment methods are accepted?",
+        "How can I pay the fees?",
+        "Do you accept KPay or CB Bank?",
+        "What are the payment options?"
+      ],
+      "responses": [
+        "YIC accepts several payment methods for your convenience, including Cash, KBZ Bank, KPay, Quick Pay, CB Bank, and AYA Bank. [cite: 73]"
+      ]
+    },
+    {
+      "tag": "late_payment_penalty",
+      "patterns": [
+        "What happens if I miss a payment deadline?",
+        "Are there penalties for late fees?",
+        "What is the late fee?"
+      ],
+      "responses": [
+        "There is a grace period of up to 7 days for late payments. After 7 days, a penalty of 10,000 MMK will be charged for each day the payment is late. [cite: 77]"
+      ]
+    },
+    {
+      "tag": "refund_policy",
+      "patterns": [
+        "What is the refund policy?",
+        "Can I get a refund if I withdraw?",
+        "Are registration fees refundable?"
+      ],
+      "responses": [
+        "If a student decides to withdraw from a program before attending any classes, the registration fees are non-refundable. [cite: 80, 84]"
+      ]
+    },
+    {
+      "tag": "program_duration",
+      "patterns": [
+        "How long does each program take?",
+        "What is the duration of the courses?",
+        "How long is the GED program?",
+        "How many years is the IGCSE course?"
+      ],
+      "responses": [
+        "Program durations vary. The GED and Pre-IGCSE programs are 8 months long, IGCSE takes 20 months, and UK Degree levels (Level 3, 4, 5, and the Bachelor year) each take 1 year to complete. [cite_start]The foundation course is 4 months. [cite: 92, 93, 94, 95, 96, 97, 98, 99]"
+      ]
+    },
+    {
+      "tag": "intake_schedule",
+      "patterns": [
+        "When can I enroll?",
+        "What is the intake schedule?",
+        "When do new classes start?",
+        "Are there specific enrollment periods?"
+      ],
+      "responses": [
+        "For our UK degree and IGCSE programs, there are typically 2 to 3 intakes per year, which are aligned with the UK exam cycles. [cite_start]For the GED program, new classes start every 2 months. [cite: 101, 102]"
+      ]
+    },
+    {
+      "tag": "accreditation",
+      "patterns": [
+        "Who recognizes your programs?",
+        "Are your degrees accredited?",
+        "Is the IGCSE program from Pearson?",
+        "Who are your programs certified by?"
+      ],
+      "responses": [
+        "Yes, our programs are well-recognized. [cite_start]The GED is recognized by the American Council on Education, our IGCSE and UK Degree Levels 3, 4, and 5 are from Pearson, and the Bachelor's degrees are awarded by our partner universities like the University of Lancashire. [cite: 113, 114, 115, 116]"
+      ]
+    },
+    {
+      "tag": "partner_universities",
+      "patterns": [
+        "Which universities are partnered with YIC?",
+        "Do you have international partners?",
+        "Can I transfer to a university abroad?",
+        "Where can I study after finishing here?"
+      ],
+      "responses": [
+        "YIC has partnerships with several universities for further studies. [cite_start]These include the University of Lancashire (UK), University of Greater Manchester (UK), Stamford International University (Thailand), MDIS (Singapore), and Kingsway Academy (Canada), among others. [cite: 126]"
+      ]
+    },
+    {
+      "tag": "campus_facilities",
+      "patterns": [
+        "What facilities are on campus?",
+        "Do you have a library or a gym?",
+        "Tell me about the campus.",
+        "What kind of facilities do you provide?"
+      ],
+      "responses": [
+        "Our campus is equipped with a range of facilities to support student learning and well-being. [cite_start]This includes a library, computer labs, a gym, a clinic, and various sports facilities. [cite: 132]"
+      ]
+    },
+    {
+      "tag": "student_life",
+      "patterns": [
+        "What is student life like?",
+        "Are there any clubs or events?",
+        "What activities can students join?",
+        "Tell me about student activities."
+      ],
+      "responses": [
+        "YIC has a vibrant student life with major annual events like the Fresher Welcome and Thingyan Festival. [cite_start]We also have many student-led clubs, including Music, Dance, Football, and Esports clubs, for students to join. [cite: 128, 130]"
+      ]
+    },
+    {
+      "tag": "compare_igcse_ged",
+      "patterns": [
+        "What are the differences between IGCSE and GED?",
+        "Compare IGCSE and GED.",
+        "Which is better, IGCSE or GED?",
+        "IGCSE vs GED"
+      ],
+      "responses": [
+        "IGCSE is a UK-based system for students aged 14-16, involving coursework and practicals over 20 months. GED is an American high school equivalency for students 16+ and is an 8-month multiple-choice exam. [cite_start]IGCSE is globally accepted, while GED is mainly recognized in the U.S. and Canada. [cite: 135, 136, 137, 138, 139]"
+      ]
+    },
+    {
+      "tag": "career_paths_hnd",
+      "patterns": [
+        "What jobs can I get with an HND?",
+        "Career paths for HND in Computing",
+        "HND in Business job opportunities",
+        "What careers can I pursue after an HND?"
+      ],
+      "responses": [
+        "An HND from YIC opens up diverse career paths. For HND in Computing, you can pursue roles like Software Developer, Network Engineer, and Web Designer. [cite_start]For HND in Business, you could work in HR Management, Marketing, or Business Consultancy. [cite: 176, 177, 178, 179, 183, 184, 185, 186]"
+      ]
+    },
+    {
+      "tag": "unknown_question_fallback",
+      "patterns": [],
+      "responses": [
+        "I'm sorry, I can only answer questions about admissions based on the information I have. For more specific details, I recommend contacting the YIC Admissions Office directly. They will be happy to help you."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "Thanks",
+        "Thank you",
+        "OK thanks"
+      ],
+      "responses": [
+        "You're welcome! Feel free to ask if you have more questions. Goodbye!",
+        "Happy to help! Have a great day."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+venv\Scripts\activate
+
+python manage.py runserver
+
+python manage.py shell -c "exec(open('load_intents.py').read())"
+
+python manage.py makemigrations chatbot
+python manage.py migrate

@@ -1,0 +1,15 @@
+asgiref==3.9.1
+click==8.2.1
+colorama==0.4.6
+Django==5.2.4
+djangorestframework==3.16.0
+joblib==1.5.1
+nltk==3.9.1
+numpy==2.3.2
+regex==2025.7.34
+scikit-learn==1.7.1
+scipy==1.16.1
+sqlparse==0.5.3
+threadpoolctl==3.6.0
+tqdm==4.67.1
+tzdata==2025.2
