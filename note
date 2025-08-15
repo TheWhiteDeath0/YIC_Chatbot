@@ -7,3 +7,4 @@ python manage.py shell -c "exec(open('load_intents.py').read())"
 python manage.py makemigrations chatbot
 python manage.py migrate
 python train_model.py
+pip install -r requirements.txt

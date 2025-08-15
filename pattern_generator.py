@@ -1,7 +1,7 @@
 # pattern_generator.py
 
 from transformers import T5ForConditionalGeneration, T5Tokenizer
-
+m
 # Load the pre-trained T5 model and tokenizer
 # This might take a few minutes the first time it runs as it needs to download the model
 print("Loading T5 paraphrasing model...")
